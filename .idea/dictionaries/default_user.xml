@@ -4,6 +4,7 @@
       <w>cputime</w>
       <w>inputname</w>
       <w>needtime</w>
+      <w>workedtime</w>
     </words>
   </dictionary>
 </component>

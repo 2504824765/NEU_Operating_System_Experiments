@@ -6,12 +6,36 @@ public class ProcessControlBlock {
     private int workedTime;
     private Status status;
     public ProcessControlBlock next;
+    private int roundTime;
+    private int waitingTime;
 
     ProcessControlBlock(String name, int requestTime) {
         this.name = name;
         this.requestTime = requestTime;
         this.workedTime = 0;
         this.status = Status.Ready;
+        this.roundTime = 0;
+        this.waitingTime = 0;
+    }
+
+    public void runOnce() {
+        workedTime++;
+    }
+
+    public int getRoundTime() {
+        return roundTime;
+    }
+
+    public void setRoundTime(int roundTime) {
+        this.roundTime = roundTime;
+    }
+
+    public int getWaitingTime() {
+        return waitingTime;
+    }
+
+    public void setWaitingTime(int waitingTime) {
+        this.waitingTime = waitingTime;
     }
 
     public String getName() {
