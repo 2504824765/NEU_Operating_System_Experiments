@@ -1,4 +1,4 @@
-package experiment3.first;
+package experiment3.third;
 // Since 2025/4/15 by CZ
 
 public class Page {
@@ -6,15 +6,26 @@ public class Page {
     private boolean isInMemory;
     private int memoryID;
     private int locationOfDisk;
+    private boolean isChanged;
 
     Page(int pageID, int locationOfDisk) {
         this.pageID = pageID;
         this.locationOfDisk = locationOfDisk;
+        this.isInMemory = false;
         this.memoryID = -1;
+        this.isChanged = false;
     }
 
     public String toString() {
-        return pageID + "\t\t" + isInMemory() + "\t\t" + memoryID + "\t\t" + locationOfDisk;
+        return pageID + "\t\t" + isChanged + "\t\t" + memoryID + "\t\t" + locationOfDisk;
+    }
+
+    public boolean isChanged() {
+        return isChanged;
+    }
+
+    public void setChanged(boolean changed) {
+        isChanged = changed;
     }
 
     public int getPageID() {
