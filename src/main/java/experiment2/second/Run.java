@@ -103,7 +103,6 @@ public class Run {
     public void run() {
         init();
         ProcessControlBlock readyQueue = buildQueue(pcbs);
-
         int cpuTime = 0;
         ProcessControlBlock current = readyQueue;
         while (readyQueue != null) {

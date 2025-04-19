@@ -6,10 +6,11 @@ public class Consumer extends Thread {
 
     Consumer(ThreadPool pool) {
         this.pool = pool;
+        running = true;
     }
 
     public void run() {
-        while (true) {
+        while (running) {
             pool.removeTask();
             pool.showCurrentTasks();
         }

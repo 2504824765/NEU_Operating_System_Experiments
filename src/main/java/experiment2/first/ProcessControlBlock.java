@@ -2,7 +2,6 @@ package experiment2.first;
 
 public class ProcessControlBlock {
     private String processName;
-    private int nextProcess; // pointer
     private int requestTime;
     private int priority;
     private Status status;
@@ -19,14 +18,6 @@ public class ProcessControlBlock {
         this.cpuTime = 0;
         this.roundTime = -1;
         this.workingTime = 0;
-    }
-
-    ProcessControlBlock(String processName, int requestTime, int priority, int nextProcess) {
-        this.processName = processName;
-        this.nextProcess = nextProcess;
-        this.requestTime = requestTime;
-        this.priority = priority;
-        this.status = Status.READY;
     }
 
     public void plusRoundTime() {
@@ -69,20 +60,12 @@ public class ProcessControlBlock {
         return workingTime;
     }
 
-    public void setNextProcess(int nextProcess) {
-        this.nextProcess = nextProcess;
-    }
-
     public void setStatus(Status status) {
         this.status = status;
     }
 
     public String getProcessName() {
         return processName;
-    }
-
-    public int getNextProcess() {
-        return nextProcess;
     }
 
     public int getRequestTime() {

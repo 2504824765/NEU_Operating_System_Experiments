@@ -3,19 +3,16 @@ package experiment1;
 import java.util.LinkedList;
 
 public class ThreadPool {
-//    ✅ 插入删除更快
-//    你在模拟线程“产生和消失”时，可能频繁地添加和移除线程对象。
-//    LinkedList 在首尾插入/删除都是 O(1)，性能好于 ArrayList 的 O(n)。
-//            ✅ 可当作队列使用
-//    LinkedList 实现了 Deque 接口，可以当成队列用，如 addLast()、removeFirst()。
-//    非常适合用作任务队列或线程对象列表。
-    private LinkedList<Product> tasks;
-    private int maxSize;
+    // 这里使用LinkedList的原因：
+    // LinkedList 在首尾插入/删除都是 O(1)，性能好于 ArrayList 的 O(n)。
+    // LinkedList 实现了 Deque 接口，可以当成队列用，如 addLast()、removeFirst()。
+    private LinkedList<Product> pool;
+    private final int maxSize;
     private int currentSize;
 
     ThreadPool(int size) {
         this.maxSize = size;
-        this.tasks = new LinkedList<>();
+        this.pool = new LinkedList<>();
     }
 
     public synchronized String showCurrentTasks() {
@@ -24,7 +21,7 @@ public class ThreadPool {
             return "EMPTY";
         }
         StringBuilder str = new StringBuilder();
-        for (Product task : tasks) {
+        for (Product task : pool) {
             str.append(task.getId()).append(" ");
         }
         return str.toString();
@@ -57,7 +54,7 @@ public class ThreadPool {
          */
         notifyAll();
         // If pull is not full
-        tasks.addLast(product);
+        pool.addLast(product);
         currentSize++;
         if (currentSize < maxSize) {
             System.out.println("Current pool: " + showCurrentTasks() + " | " + "Current size: " + currentSize);
@@ -85,7 +82,7 @@ public class ThreadPool {
         }
         // Pool is not empty
         notifyAll(); // Wake up other process that the pool status is updated
-        tasks.removeFirst();
+        pool.removeFirst();
         currentSize--;
         if (currentSize != maxSize) {
             System.out.println("Current pool: " + showCurrentTasks() + " | " + "Current size: " + currentSize);
