@@ -16,7 +16,7 @@ public class ProcessControlBlock {
         this.priority = priority;
         this.status = Status.READY;
         this.cpuTime = 0;
-        this.roundTime = -1;
+        this.roundTime = 0;
         this.workingTime = 0;
     }
 

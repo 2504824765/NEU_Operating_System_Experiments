@@ -56,7 +56,7 @@ public class Run {
         else {
             operations.add(new Command(0, 12, 1));
             operations.add(new Command(1, 23, 0));
-            operations.add(new Command(2, 34, 1));
+            operations.add(new Command(2, 34, 0));
             operations.add(new Command(1, 12, 1));
             operations.add(new Command(3, 45, 0));
             operations.add(new Command(4, 56, 0));

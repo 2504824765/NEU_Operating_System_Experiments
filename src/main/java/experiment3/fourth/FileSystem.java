@@ -140,8 +140,9 @@ public class FileSystem {
         System.out.println("Current user: '" + currentUser.getUserName() + "'");
         Scanner in = new Scanner(System.in);
         int choice = 0;
+        welcome();
         while (true) {
-            welcome();
+            System.out.print("Please enter your choice: ");
             choice = in.nextInt();
             String targetFileName = "";
             switch (choice) {
@@ -185,7 +186,6 @@ public class FileSystem {
                 default:
                     break;
             }
-            in.close();
         }
     }
 
@@ -201,6 +201,5 @@ public class FileSystem {
                 "7. Check Dir\n" +
                 "0. Exit System\n" +
                 "----------------------------");
-        System.out.print("Please enter your choice: ");
     }
 }
